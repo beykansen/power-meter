@@ -47,11 +47,10 @@ Usage of power-meter:
 ```
 ## Roadmap & Known Issues
 - [ ] Dynamic parsing according to path.
+- [ ] Tests will be added..
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
-
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](./license.md)
