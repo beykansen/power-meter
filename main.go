@@ -10,8 +10,7 @@ import (
 	"github.com/beykansen/power-meter/pkg"
 )
 
-// change these lines according to your setup.
-// comma is for children path. This means that Cpu Package under Power under AMD Ryzen 7 3700X on OpenHardwareMonitor gui.
+// Change these lines according to your setup.
 var (
 	cpuPowerPath = "AMD Ryzen 7 3700X, Powers, CPU Package"
 	gpuPowerPath = "NVIDIA NVIDIA GeForce RTX 2070 SUPER, Powers, GPU Power"
@@ -20,7 +19,7 @@ var (
 	fanCount     = 5
 	pricePerkWh  = 0.85
 	currency     = "TL"
-	offset       = 0.0
+	offset       = 77.0
 	port         = "8085"
 )
 
