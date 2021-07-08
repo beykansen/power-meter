@@ -12,11 +12,11 @@ func Calculate(cpuPowerPath string, gpuPowerPath string, usbCount int, hddCount 
 		return 0.0, fmt.Errorf("open hardware monitor cannot be found on https://localhost:8085. please be sure open hardware monitor is running and webserver enabled on 8085 port")
 	}
 
-	rawCpuPowerText, err := parseMetrics(strings.Split(cpuPowerPath, ","), metrics)
+	rawCpuPowerText, err := parseMetrics(strings.Split(cpuPowerPath, "_"), metrics)
 	if err != nil {
 		return 0.0, err
 	}
-	rawGpuPowerText, err := parseMetrics(strings.Split(gpuPowerPath, ","), metrics)
+	rawGpuPowerText, err := parseMetrics(strings.Split(gpuPowerPath, "_"), metrics)
 	if err != nil {
 		return 0.0, err
 	}
@@ -61,5 +61,5 @@ func parseMetrics(pathVar []string, metrics *ResponseDto) (string, error) {
 			}
 		}
 	}
-	return "", fmt.Errorf("power not found")
+	return "", fmt.Errorf("metric not found on the path.")
 }

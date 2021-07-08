@@ -153,3 +153,5 @@ $RECYCLE.BIN/
 # Local History for Visual Studio Code
 .history/
 .idea/
+power-meter
+power-meter.exe
