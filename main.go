@@ -60,6 +60,7 @@ func drawUi(recordings *pkg.Recordings, contextData *ContextData) {
 		log.Fatalf("failed to initialize ui: %v", err)
 	}
 	defer ui.Close()
+	metrics := getMetrics(recordings, contextData)
 
 	liveIndicator := widgets.NewParagraph()
 	liveIndicator.Title = "POWER-METER"
@@ -77,6 +78,7 @@ func drawUi(recordings *pkg.Recordings, contextData *ContextData) {
 
 	resultText := widgets.NewParagraph()
 	resultText.Title = "SUMMARY"
+	resultText.Text = metrics.text
 	resultText.SetRect(0, 3, 70, 10)
 	resultText.TextStyle.Fg = ui.ColorWhite
 	resultText.BorderStyle.Fg = ui.ColorCyan
@@ -84,7 +86,7 @@ func drawUi(recordings *pkg.Recordings, contextData *ContextData) {
 	currentConsumption := widgets.NewPlot()
 	currentConsumption.Title = "CURRENT CONSUMPTION (W)"
 	currentConsumption.Data = make([][]float64, 1)
-	currentConsumption.Data[0] = []float64{}
+	currentConsumption.Data[0] = []float64{metrics.currentWatt}
 	currentConsumption.SetRect(0, 10, 70, 20)
 	currentConsumption.AxesColor = ui.ColorWhite
 	currentConsumption.Marker = widgets.MarkerDot
@@ -93,14 +95,13 @@ func drawUi(recordings *pkg.Recordings, contextData *ContextData) {
 	costs := widgets.NewPlot()
 	costs.Title = fmt.Sprintf("COSTS (%s)", contextData.currency)
 	costs.Data = make([][]float64, 2)
-	costs.Data[0] = []float64{}
-	costs.Data[1] = []float64{}
+	costs.Data[0] = []float64{metrics.dailyElectricCost}
+	costs.Data[1] = []float64{metrics.monthlyElectricCost}
 	costs.SetRect(0, 40, 70, 20)
 	costs.AxesColor = ui.ColorWhite
 	costs.Marker = widgets.MarkerBraille
 	costs.LineColors[0] = ui.ColorCyan
 	costs.LineColors[1] = ui.ColorYellow
-	costs.BorderStyle.Fg = ui.ColorCyan
 
 	draw := func(count int) {
 		metrics := getMetrics(recordings, contextData)

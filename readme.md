@@ -15,13 +15,13 @@ You can add positive or negative offset watt for ram, motherboard and other peri
 - Around 30 W for regular motherboard, 65 W for high-end motherboard can be allocated.
 - According to these; I've 32 GB DDR4 ram with high-end motherboard; so I've set (3 W * 4) for ram and 65 W for motherboard.
 
-
 ```bash
 # clone project
 go install .
 ```
 
 ## Usage
+![usage](./images/usage.gif)
 
 ```bash
 power-meter --help
