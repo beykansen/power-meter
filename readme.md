@@ -37,10 +37,10 @@ go install .
 ```bash
 power-meter
 ```
-## Roadmap
+## Roadmap & Known Issues
 - [ ] Get variable from cmd args.
 - [ ] Dynamic parsing according to path.
-
+- [ ] Live update doesn't work properly with Windows CMD and Powershell. Please, if you are running on Windows, consider using Git Bash right now.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
